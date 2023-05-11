@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>포트홀 감지</title>
+
+    <style>
+    html,body{
+        margin: 0;
+        height: 100%;
+        overflow: hidden;
+    }
+    </style>
+
+</head>
+<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- 사이드 메뉴바 -->
+<div class="navigation" style="font-family: 'Do Hyeon', sans-serif;">
+        <ul>
+            <li class="list active">
+                <a href="{% url 'video:detect' %}">
+                    <span class="icon"><ion-icon name="videocam"></ion-icon></span>
+                    <span class="title">촬영</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="{% url 'map:warning' %}">
+                    <span class="icon"><ion-icon name="map"></ion-icon></span>
+                    <span class="title">지도보기</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="{% url 'report:list' %}">
+                    <span class="icon"><ion-icon name="list"></ion-icon></span>
+                    <span class="title">신고내역</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="{% url 'common:mypage' %}">
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <span class="title">마이페이지</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="{% url 'common:logout' %}">
+                    <span class="icon"><ion-icon name="log-out"></ion-icon></span>
+                    <span class="title">로그아웃</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script type="text/javascript" src="{% static 'menu.js' %}"></script>
+
+<div class="container item-3">
+    <div class="subject">
+        <p>포트홀 감지</p>
+    </div>
+    <!-- 영상 부분 -->
+    <div>
+        <div style="margin:0 auto; width: 800px; position:static;">
+            <div>
+                <div>
+                    <!-- 화면 -->
+                    <div>
+                        <img src = "{% url 'video:video_feed' %}" style="height:500px; width:800px; background: black;">
+                    </div>
+                    <!-- 메뉴바 -->
+                    <div class="screen_bar">
+                        <hr style="width: 770px; margin: 0 auto;">
+                        <div id="icon">
+                            <div id="left">
+                                <a href ="{% url 'video:detect' %}"><ion-icon name="power"></ion-icon></a>
+                            </div>
+                            <div id="right">
+                                <a href="{% url 'video:mypothole'%}"><ion-icon name="folder"></ion-icon></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+</body>
+</html>

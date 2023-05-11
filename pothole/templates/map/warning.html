@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>포트홀 주의 구역</title>
+
+    <style>
+    html,body{
+        margin: 0;
+        height: 100%;
+        overflow: hidden;
+    }
+    </style>
+
+    <link rel="shortcut icon" href="#">
+</head>
+<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- 사이드 메뉴바 -->
+<div class="navigation" style="font-family: 'Do Hyeon', sans-serif;">
+        <ul>
+            <li class="list">
+                <a href="{% url 'video:detect' %}">
+                    <span class="icon"><ion-icon name="videocam"></ion-icon></span>
+                    <span class="title">촬영</span>
+                </a>
+            </li>
+            <li class="list active">
+                <a href="{% url 'map:warning' %}">
+                    <span class="icon"><ion-icon name="map"></ion-icon></span>
+                    <span class="title">지도보기</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="{% url 'report:list' %}">
+                    <span class="icon"><ion-icon name="list"></ion-icon></span>
+                    <span class="title">신고내역</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="{% url 'common:mypage' %}">
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <span class="title">마이페이지</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="{% url 'common:logout' %}">
+                    <span class="icon"><ion-icon name="log-out"></ion-icon></span>
+                    <span class="title">로그아웃</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script type="text/javascript" src="{% static 'menu.js' %}"></script>
+
+<div class="container item-3">
+    <div class="subject">
+        <p>포트홀 주의 구역</p>
+    </div>
+    <div id="map_container">
+        <div id="map">
+            {{map|safe}}
+        </div>
+
+        <div class="map_bar">
+            <br>
+            <div class="search-bar">
+                <form action="." method="post">
+                    <input class="search-txt" type="text" placeholder="검색어를 입력해 주세요">
+                    <button class="search-btn" type=""><ion-icon name="search"></ion-icon></button>
+                </form>
+            </div>
+
+            <div class="notice">
+                <a><span><ion-icon name="megaphone"></ion-icon></span> 안전주의!</a>
+            </div>
+            <div class="search_result">
+                <!-- 첫번째 pip -->
+                <div>
+                    <div>
+                        <img src='../media/report/map1.jpg'>
+                    </div>
+                    <div class="pip_subject">
+                        <a>서울 동작구 사당동 87-8</a>
+                    </div>
+                    <div class="pip_content">
+                        <a><ion-icon name="location" style="width: 10px; height:10px;"></ion-icon>37.48827, 126.98273</a>
+                    </div>
+                </div>
+
+                <!-- 두번째 pip -->
+                <div>
+                    <div>
+                        <img src='../media/report/map2.jpg'>
+                    </div>
+                    <div class="pip_subject">
+                        <a>서울 서초구 방배동 1675</a>
+                    </div>
+                    <div class="pip_content">
+                        <a>37.48874, 126.98250</a>
+                    </div>
+                </div>
+
+                <!-- 세번째 pip -->
+                <div>
+                    <div>
+                        <img src='../media/report/map3.jpg'>
+                    </div>
+                    <div class="pip_subject">
+                        <a>서울 동작구 사당동 144-4</a>
+                    </div>
+                    <div class="pip_content">
+                        <a>37.48765, 126.98211</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+</body>
+</html>

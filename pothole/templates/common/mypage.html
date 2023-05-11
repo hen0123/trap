@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>마이페이지</title>
+
+    <style>
+    html,body{
+        margin: 0;
+        height: 100%;
+        overflow: hidden;
+    }
+    </style>
+
+    <link rel="shortcut icon" href="#">
+</head>
+<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- 사이드 메뉴바 -->
+<div class="navigation" style="font-family: 'Do Hyeon', sans-serif;">
+        <ul>
+            <li class="list">
+                <a href="{% url 'video:detect' %}">
+                    <span class="icon"><ion-icon name="videocam"></ion-icon></span>
+                    <span class="title">촬영</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="{% url 'map:warning' %}">
+                    <span class="icon"><ion-icon name="map"></ion-icon></span>
+                    <span class="title">지도보기</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="{% url 'report:list' %}">
+                    <span class="icon"><ion-icon name="list"></ion-icon></span>
+                    <span class="title">신고내역</span>
+                </a>
+            </li>
+            <li class="list active">
+                <a href="{% url 'common:mypage' %}">
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <span class="title">마이페이지</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="{% url 'common:logout' %}">
+                    <span class="icon"><ion-icon name="log-out"></ion-icon></span>
+                    <span class="title">로그아웃</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script type="text/javascript" src="{% static 'menu.js' %}"></script>
+
+<!-- 마이페이지 -->
+<div class="container item-3">
+    <div class="subject">
+        <p>마이페이지</p>
+    </div>
+    <!-- 하위 메뉴 -->
+    <div>
+        <!-- 비밀번호 변경 -->
+        <div class="mypage_card" style="text-align: center; margin-left: 17.5%;">
+            <div class="front">
+                <a><ion-icon name="key"></ion-icon></a>
+                <h1>비밀번호 변경</h1>
+            </div>
+            <div class="back" style="background: #C0C0C0;">
+                <a><ion-icon name="construct" style="color: #fff;"></ion-icon></a>
+                <h1 style="color: #fff;">서비스준비중···</h1>
+            </div>
+        </div>
+
+        <!-- 회원정보 수정 -->
+        <div class="mypage_card">
+            <div class="front">
+                <ion-icon name="person"></ion-icon>
+                <h1>회원정보 수정</h1>
+            </div>
+            <div class="back">
+                {% if user_form.errors %}
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                <div id="form_errors">
+                {% for key, value in user_form.errors.items %}
+                <strong>{{ value }}</strong>
+                {% endfor %}
+                </div>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+                </div>
+                {% endif %}
+
+                <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="img_info"><img src="{%static 'image/profile.png' %}">
+                    <div class="profile_info">
+                        <p> 이름 <br>{{ user_form.name }} </p>
+                        <p> 휴대전화 <br>{{ user_form.phone }} </p>
+                        <p> 이메일 <br>{{ user_form.email }} </p>
+                    </div>
+                    <div class="button">
+                        <button type="reset" class="btn btn-dark btn-lg" style="background-color:gray;">초기화</button>
+                        <button type="submit" class="btn btn-dark btn-lg">회원정보 변경</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- 보관함 -->
+        <div class="mypage_card" style="cursor:pointer;">
+            <div class="front" onclick="location.href='{% url 'video:mypothole' %}'">
+                <a href="{% url 'video:mypothole' %}"><ion-icon name="folder"></ion-icon></a>
+                <h1>보관함</h1>
+            </div>
+            <div class="back" onclick="location.href='{% url 'video:mypothole' %}'">
+                <a><ion-icon name="folder-open"></ion-icon></a>
+                <h1>확인하기</h1>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+</body>
+</html>

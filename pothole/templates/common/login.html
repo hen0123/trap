@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+
+    <style>
+    .background_img{
+         width: 700px;
+         height: 850px;
+         background: url('/static/image/poster1.png') no-repeat;
+         background-size: cover;
+         color: white;
+    }
+    </style>
+
+</head>
+<body style="background-color: #fff;">
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container poster">
+    <div class="item background_img">
+        <div id="mainwrap">
+        <!-- 로고 -->
+        <div>
+            <a href="{% url 'common:main' %}"> <img src="{%static 'image/로고2.png' %}"></a>
+        </div>
+        <div style="margin-bottom: -3px;">
+            <img style="width: 500px; height: 360px;" src="{% static 'image/bx1.png' %}">
+        </div>
+        <div>
+            <p class="dead"><b>DEAD OR ALIVE</b></p>
+        </div>
+        <!-- 로그인 폼 -->
+        <div>
+            <form method="post" action="{% url 'common:login' %}">
+                {% csrf_token %}
+                {% include "form_errors.html" %}
+                <div style="margin-top: px;" >
+                    <label class="do_hyeon font1" for="username">사용자ID</label>
+                    <input type="text" class="place" name="username" id="username" placeholder="아이디를 입력하세요"
+                           style="text-align:center;" value="{{ form.username.value|default_if_none:''}}" >
+                </div>
+                <div style="margin-top: 15px;">
+                    <label class="do_hyeon font1" for="password">비밀번호</label>
+                    <input type="password" class="place" name="password" id="password" placeholder="비밀번호를 입력하세요"
+                           style="text-align:center;" value="{{ form.password.value|default_if_none:''}}">
+                </div>
+                <div>
+                    <div id="button">
+                        <button type="submit" id="button1" value="로그인" class="do_hyeon" style="font-size:20px;">로그인하기</button>
+                        <button type="button" id="button2" value="회원가입" class="do_hyeon"
+                                style="font-size:20px;" onclick = "location.href = '{% url 'common:signup' %}'">가입하기</button>
+                    </div>
+                    <p style="font-size:10px; ">비밀번호를 잊어버리셨나요?</p>
+                </div>
+                </form>
+        </div>
+        </div>
+        <footer>
+                <div style="float:left;">
+                <p> 대표 : 박소은 신동원 이성철 이지혜 한창현 </p>
+                <p> 서울 서초구 동작대로 132 9층 </p>
+                <p><b> Copyright © 러닝메이트. All rights reserved. </b></p>
+                </div>
+                <!-- 1조 팀명 -->
+                <div style="float:right;">
+                <img src="{% static 'image/로고RUNNINGMATE.png' %}" alt="러닝메이트">
+                </div>
+            </footer>
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>

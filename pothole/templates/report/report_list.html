@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>신고 내역</title>
+
+    <style>
+    html,body{
+        margin: 0;
+        height: 100%;
+        width: 100%;
+    }
+    </style>
+
+</head>
+<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- 사이드 메뉴바 -->
+<div class="navigation" style="font-family: 'Do Hyeon', sans-serif;">
+    <ul>
+        <li class="list">
+            <a href="{% url 'video:detect' %}">
+                <span class="icon"><ion-icon name="videocam"></ion-icon></span>
+                <span class="title">촬영</span>
+            </a>
+        </li>
+        <li class="list">
+            <a href="{% url 'map:warning' %}">
+                <span class="icon"><ion-icon name="map"></ion-icon></span>
+                <span class="title">지도보기</span>
+            </a>
+        </li>
+        <li class="list active">
+            <a href="{% url 'report:list' %}">
+                <span class="icon"><ion-icon name="list"></ion-icon></span>
+                <span class="title">신고내역</span>
+            </a>
+        </li>
+        <li class="list">
+            <a href="{% url 'common:mypage' %}">
+                <span class="icon"><ion-icon name="person"></ion-icon></span>
+                <span class="title">마이페이지</span>
+            </a>
+        </li>
+        <li class="list">
+            <a href="{% url 'common:logout' %}">
+                <span class="icon"><ion-icon name="log-out"></ion-icon></span>
+                <span class="title">로그아웃</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+<!-- 신고 목록 -->
+
+<div class="container item-3">
+    {% if messages %}
+    <div class="alert" role="alert">
+    {% for message in messages %}
+        <strong>{{ message.tags }}</strong>
+        <ul><li>{{ message.message }}</li></ul>
+    {% endfor %}
+    </div>
+    {% endif %}
+    <div class="subject">
+        <p>신고 내역 목록</p>
+    </div>
+
+    <div>
+    <!-- 신고 리스트 -->
+    <div class="report">
+        <!-- 신고하기 버튼 -->
+        <div class="report_create" style="cursor:pointer;" onclick = "location.href = '{% url 'report:create' %}'">
+            <div><img src="{%static 'image/report-image.png' %}" class="create_img"></div>
+            <div class="do_hyeon" style="font-size: 25px; vertical-align: middle;"><a>신고하기</a></div>
+        </div>
+        {% if report_list %}
+        {% for report in report_list %}
+            <div class="report_main">
+                <div>
+                    <div style="cursor:pointer;" onclick = "location.href = '{% url 'report:detail' report.id %}'">
+                    {% if report.file %}
+                        <div>
+                            <img src="{{ report.file.url }}" class="report_img">
+                        </div>
+                    {% else %}
+                        <div>
+                            <a><img src="{% static 'image/basis-image1.png' %}" class="report_img" alt="첨부파일 없음"></a>
+                        </div>
+                    {% endif %}
+                    </div>
+                    <div class="report_button">
+                        <div style="float:left;">
+                            <a class="report_state">{{ report.state }}</a>
+                        </div>
+                        <div class="report_content">
+                            <a class="report_content_1">{{ report.subject }}</a>
+                        </div>
+                        <div class="report_content_sub">
+                            <ion-icon name="location" style="color:white; height:10px; width:10px;"></ion-icon>
+                            <a class="report_content_2"> 위도 : {{ report.x_pos }} </a>
+                            <a class="report_content_2"> 경도 : {{ report.y_pos }} </a>
+                        </div>
+                    </div>
+                    <div style="border-top: 1px solid white;">
+                        <div class="report_content_bottom">
+                        {% if request.user == report.author %}
+                            <a href="{% url 'report:report_modify' report.id  %}">
+                                <ion-icon name="create" class="report_content_3" style="margin-right: 5px;"></ion-icon></a>
+                            <a href="javascript:void(0)" class="delete" data-uri="{% url 'report:report_delete' report.id  %}">
+                                <ion-icon name="trash-outline" class="report_content_3" style="margin-right: 10px;"></ion-icon></a>
+                        {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        {% else %}
+        <p>신고내역이 없습니다.</p>
+        {% endif %}
+        </div>
+    </div>
+
+    <!-- 페이징처리 시작 -->
+    <ul class="pagination" style="clear:both;">
+        <!-- 이전페이지 -->
+        {% if report_list.has_previous %}
+        <li>
+            <a class="page-link" href="?page={{ report_list.previous_page_number }}"><ion-icon name="arrow-back"></ion-icon></a>
+        </li>
+        {% else %}
+        <li>
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#"><ion-icon name="arrow-back"></ion-icon></a>
+        </li>
+        {% endif %}
+        <!-- 페이지리스트 -->
+        {% for page_number in report_list.paginator.page_range %}
+        {% if page_number >= report_list.number|add:-5 and page_number <= report_list.number|add:5 %}
+        {% if page_number == report_list.number %}
+        <li class="page-item active" aria-current="page">
+            <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+        </li>
+        {% else %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+        </li>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+        <!-- 다음페이지 -->
+        {% if report_list.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ report_list.next_page_number }}"><ion-icon name="arrow-forward"></ion-icon></a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#"><ion-icon name="arrow-forward"></ion-icon></a>
+        </li>
+        {% endif %}
+    </ul>
+    <!-- 페이징처리 끝 -->
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script type='text/javascript'>
+const delete_elements = document.getElementsByClassName("delete");
+Array.from(delete_elements).forEach(function(element) {
+    element.addEventListener('click', function() {
+        if(confirm("정말로 삭제하시겠습니까?")) {
+            location.href = this.dataset.uri;
+        };
+    });
+});
+</script>
+
+<script type='text/javascript'>
+const list = document.querySelectorAll('.list');
+function activeLink() {
+    list.forEach((item) =>
+    item.classList.remove('active'));
+    this.classList.add('active');
+}
+
+list.forEach((item) =>
+    item.addEventListener('click', activeLink));
+</script>
+{% endblock %}
+
+</body>
+</html>

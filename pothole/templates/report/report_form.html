@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+    html,body{
+        margin: 0;
+        height: 100%;
+        width: 100%;
+    }
+    </style>
+
+</head>
+<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- 사이드 메뉴바 -->
+<div class="navigation" style="font-family: 'Do Hyeon', sans-serif;">
+    <ul>
+        <li class="list">
+            <a href="{% url 'video:detect' %}">
+                <span class="icon"><ion-icon name="videocam"></ion-icon></span>
+                <span class="title">촬영</span>
+            </a>
+        </li>
+        <li class="list">
+            <a href="{% url 'map:warning' %}">
+                <span class="icon"><ion-icon name="map"></ion-icon></span>
+                <span class="title">지도보기</span>
+            </a>
+        </li>
+        <li class="list active">
+            <a href="{% url 'report:list' %}">
+                <span class="icon"><ion-icon name="list"></ion-icon></span>
+                <span class="title">신고내역</span>
+            </a>
+        </li>
+        <li class="list">
+            <a href="{% url 'common:mypage' %}">
+                <span class="icon"><ion-icon name="person"></ion-icon></span>
+                <span class="title">마이페이지</span>
+            </a>
+        </li>
+        <li class="list">
+            <a href="{% url 'common:logout' %}">
+                <span class="icon"><ion-icon name="log-out"></ion-icon></span>
+                <span class="title">로그아웃</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+<!-- 신고 폼 -->
+<div class="container item-3">
+    <div class="subject">포트홀 신고</div>
+
+    <form id="rp_form" method="post" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+
+        <!-- 신고 폼 -->
+        <div class="report_form">
+            <div>
+                <!-- 신고폼 헤더 부분 -->
+                <div id="subject">
+                    <div style="float:left; margin: 5px 15px 0 15px;">
+                        <img style="width:160px;" src="{% static 'image/report_form.png' %}">
+                    </div>
+                    <div>
+                       <p><span>지뢰찾기</span> MOST WANTED POTHOLE</p>
+                    </div>
+                </div>
+                <!-- 신고폼 내용 부분 -->
+                <div class="content" style="margin: 40px;">
+                    <div style="float:left; width: 300px;">
+                        <!-- 첨부 이미지 -->
+                        <img id="preview">
+                    </div>
+                    <div style="float:left; text-align: left; margin-left: 30px;">
+                        <!-- 제목 작성 -->
+                        <input type="text" name="subject" id="input" value="{{ form.subject.value|default_if_none:'' }}"
+                        placeholder="위치를 작성하세요.">
+                        <!-- 좌표 -->
+                        <div id="position">
+                            <div style="float: left; width: 120px;">
+                                <a><ion-icon name="location" style="width: 15px; height:15px; margin-right:5px;"></ion-icon>목격위치</a>
+                            </div>
+                             <!-- 위도 -->
+                            <div style="float: left;">
+                                <label for="x_pos" class="form-label"> 위도 </label>
+                                <input type="text" class="form-control" name="x_pos" id="x_pos"
+                                       value="{{ form.x_pos.value|default_if_none:'' }}" placeholder="위도입력">
+                            </div>
+                            <!-- 경도 -->
+                            <div style="float: left;">
+                                <label for="y_pos" class="form-label">, 경도 </label>
+                                <input type="text" class="form-control" name="y_pos" id="y_pos"
+                                       value="{{ form.y_pos.value|default_if_none:'' }}" placeholder="경도입력">
+                            </div>
+                        </div>
+                        <!-- 파일 첨부 -->
+                        <div>
+                            <input type="file" name="file" id="file" onchange="readURL(this);">
+                        </div>
+                        <!-- 신고내용 작성 -->
+                        <div class="form-label">
+                            <label for="content">신고 내용</label>
+                            <br>
+                            <textarea class="content" name="content"
+                                      id="content" rows="10" placeholder="내용을 입력하세요.">{{ form.content.value|default_if_none:'' }}</textarea>
+                            <span class="error" hidden="" style="color:red;">내용을 입력하세요.</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 취소/확인 버튼 -->
+                <div style="clear:both;" class="button">
+                    <a href="{% url 'report:list' %}" class="cancel">취소하기</a>
+                    <button type="submit" class="btn submit" onclick="showCaptured()" id="open">신고하기</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div id="captured"><img src="{% static 'image/captured.png' %}" class="captured" onclick="hideCaptured()"></div>
+</div>
+
+<!-- 오류표시 Start -->
+{% if form.errors %}
+<div class="alert alert-danger" role="alert">
+    {% for field in form %}
+    {% if field.errors %}
+    <div>
+        <strong>{{ field.label }}</strong>
+        {{ field.errors }}
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+{% endif %}
+<!-- 오류표시 End -->
+
+{% endblock %}
+
+{% block script %}
+<script type='text/javascript'>
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      document.getElementById('preview').src = e.target.result;
+    };
+    reader.readAsDataURL(input.files[0]);
+  } else {
+    document.getElementById('preview').src = "";
+  }
+}
+
+function f_clickFunc() {
+    alert
+}
+
+// submit 막기
+const $form = document.querySelector('form');
+
+$form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  console.log(event.target);
+
+  setTimeout("rp_form.submit();", 2000);
+
+});
+
+
+// submit 클릭시 출력
+function showCaptured() {
+  document.querySelector('.captured').style.display = "block";
+}
+
+
+</script>
+
+{% endblock %}
+</body>
+</html>

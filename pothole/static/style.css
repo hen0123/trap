@@ -1,0 +1,1201 @@
+*{
+    margin: 0;
+    padding: 0;
+    color: #2B1C11;
+}
+
+
+
+.container{
+    width: 700px;
+    margin:0 auto;
+    padding: 0;
+}
+
+/*
+.container:after{
+    content: '';
+    display: block;
+    clear: both;
+    height: 0;
+    visibility: hidden;
+}
+*/
+
+.item{
+    display: inline-block;
+    padding: 5%;
+    vertical-align: top;
+    font-size: 1rem; /* root em: 16px */
+    text-align: center;
+}
+
+.item-2{
+    background-color: #D1B08C;
+    /*background-color: linear-gradient(50deg, #BDA78B 0%, #DEC5A0 50%, #D1B08C 100%);*/
+    width: 100%;
+    height: 850px;
+    text-align: center;
+}
+
+.item-3{
+    background-color: #D1B08C;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+
+footer{
+    bottom: 0;
+    font-size: 10px;
+    text-align: left;
+    width: 600px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* bx슬라이더 사이즈*/
+.BX{
+    width: 600px;
+    height: 400px;
+    border: 1px solid;
+    margin: 0 auto;
+}
+
+#mainwrap{
+    min-height: calc(100% - 50px);
+}
+
+.slider{
+    width: 600px;
+    margin:0 auto;
+}
+
+#login button{
+   color: #2B1C11;
+   font-size: 30px;
+   border: 2px solid #2B1C11;
+   border-radius: 10px;
+   padding: 6px;
+   box-sizing: border-box;
+   background-color: transparent;
+}
+
+#login_s{
+   width: 150px;
+   line-height: 50px;
+   text-align: center;
+   text-decoration: none;
+}
+
+#login button:hover{
+    color: white;
+    background-color: #2B1C11;
+}
+
+.dead{
+    color: #2B1C11;
+    display: block;
+    font-family: 'ChosunCentennial';
+    font-size: 64px;
+}
+
+.section{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin: 0;
+    font-size: 0px;
+}
+
+.place{
+    width: 200px;
+    height: 30px;
+    border-radius: 7px;
+    border: 1px solid gray;
+}
+
+#button1{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin-right: -4px;
+}
+
+#button2{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-left: -3px;
+
+}
+#button button{
+    width: 100px;
+    border: 2px solid #2B1C11;
+    background-color:transparent;
+    color: #2B1C11;
+    padding: 5px;
+    margin-top: 2%;
+}
+
+#button button:hover{
+    color: white;
+    background-color: #2B1C11;
+}
+
+.jb-1{
+    height: 25px;
+    margin: 0px auto;
+    position: relative;
+}
+
+.jb-2{
+    height: 25px;
+    position: absolute;
+    left: 6px;
+    top: 9px;
+    display: none;
+}
+
+.jb:hover .jb-2{
+    display: block;
+}
+
+.font1{
+    color: #2B1C11;
+    font-size: 20px;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-family: 'NanumBarunGothic', sans-serif;
+}
+
+.table_radius{
+    width: 80%;
+    min-width: 500px;
+    background-color: #2B1C11;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td{
+    border-bottom: 1px solid #2B1C11;
+    background-color: #fff;
+}
+
+td a{
+    text-decoration: none;
+}
+
+.table_head{
+    box-sizing: border-box;
+    width: 100%;
+    height: 35px;
+}
+
+.subject{
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 35px;
+    color: #2B1C11;
+    text-align: center;
+    margin: 20px;
+}
+
+.subject_font{
+    color: white;
+    font-size: 15px;
+    border-color: transparent;
+    font-family: 'NanumBarunGothic', sans-serif;
+}
+
+.content_font{
+    color: #2B1C11;
+    font-size: 15px;
+    font-family: 'NanumBarunGothic', sans-serif;
+}
+
+.pagination {
+	text-align:center;
+}
+.pagination li {
+	display:inline;
+	vertical-align:middle;
+}
+.pagination li a {
+	display:-moz-inline-stack;	/*FF2*/
+	display:inline-block;
+	vertical-align:top;
+	padding: 4px;
+	color: #2B1C11;
+	font-size:12px;
+	text-align:center;
+	text-decoration:none;
+	width /**/:26px;	/*IE 5.5*/
+	font-family: 'Do Hyeon', sans-serif;
+}
+
+.pagination li a.now {
+	color: #fff;
+	background-color:#f40;
+	border:1px solid #f40;
+}
+
+.pagination li a:hover, .pagination li a:focus, .pagination li a ion-icon:hover, .pagination li a ion-icon:focus {
+	color: #fff;
+	border:1px solid #2B1C11;
+	background-color:#2B1C11;
+	border-radius: 50%;
+}
+
+.note p{
+    font-family: 'LeeSeoyun';
+    margin: 10px;
+    border-bottom: 1px solid;
+    height: auto;
+}
+
+/* 형광펜-yellow */
+.point_y{
+    background: linear-gradient(to top, #FFE400 50%, transparent 50%);
+}
+
+/* 연두색 */
+.point_g{
+    background: linear-gradient(to top, #ABF200 50%, transparent 50%);
+}
+
+/* 주황색 */
+.point_o{
+    background: linear-gradient(to top, #FF5E00 50%, transparent 50%);
+}
+
+.report{
+    margin:0 auto;
+    max-width:1250px;
+    min-width: 510px;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+.report_create{
+    float:left;
+    background: #fff;
+    width:220px;
+    height: 250px;
+    margin:15px;
+    border: 2px solid #2B1C11;
+    border-radius: 20px;
+}
+
+.create_img{
+    width:216px;
+    height:170px;
+    border-radius: 20px 20px 0 0;
+}
+
+.report_main{
+    float:left;
+    background: #2B1C11;
+    border-radius: 20px;
+    width:220px;
+    height: 250px;
+    margin: 15px;
+    box-shadow: 5px 5px 5px rgb(43, 28, 17, 0.5);
+}
+
+.report_img{
+    width:220px;
+    height:170px;
+    border-radius: 20px 20px 0 0;
+}
+
+.report_button{
+    text-align:left;
+    margin-left:10px;
+    margin-right:10px;
+    margin-top: 3px;
+    height:48px;
+}
+
+.report_state{
+    color: #2B1C11;
+    font-size: 11px;
+    border: 1px solid white;
+    padding:1px;
+    border-radius: 5px;
+    background-color:white;
+}
+
+.report_content{
+    width:76%;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    float:left;
+    color: #fff;
+}
+
+.report_content_sub {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+    color: #fff;
+}
+
+.report_content_1{
+    color: white;
+    font-size: 14px;
+    margin-left:5px;
+}
+
+.report_content_2{
+    color: white;
+    font-size: 10px;
+}
+
+.report_content_2 a {
+
+}
+
+.report_content_bottom{
+    float:right;
+    width:30%;
+}
+
+.report_content_3{
+    color:white;
+    margin-top:3px;
+}
+
+input[type="file"]::file-selector-button {
+    border-radius: 3px;
+    border: 0px;
+    background: #5D4639;
+    color: #fff;
+    font-family: '';
+    margin-top: 10px;
+}
+
+/* 신고폼 */
+
+.report_form .submit:hover {
+    cursor: pointer;
+}
+
+.report_form {
+    width: 1000px;
+    height: 600px;
+    background: white;
+    margin:0 auto;
+    margin-top: 20px;
+}
+
+.report_form input {
+    font-family: 'ONE-Mobile-Title';
+    height: 40px;
+    border: 0px;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+}
+
+.report_form #subject {
+    background: #5D4639;
+    height: 200px;
+    width: 100%;
+    padding: 10px;
+}
+
+.report_form #subject p {
+    color: #fff;
+    font-size: 66px;
+    text-align: left;
+    font-family: 'Libre Baskerville', serif;
+}
+
+.report_form #subject span {
+    color: #fff;
+    font-size: 66px;
+    text-align: left;
+    font-family: 'SBAggroB';
+    vertical-align: middle;
+    letter-spacing: 6px;
+}
+
+.report_form .content {
+    font-family: 'ONE-Mobile-Title';
+    font-size: 20px;
+}
+
+.content img {
+    width:300px;
+    height:300px;
+    border: 1px solid black;
+}
+
+.report_form .content #input {
+    font-size: 35px;
+    font-weight: bold;
+    width: 590px;
+}
+
+.report_form .content #input::placeholder {
+    color: #C0C0C0;
+}
+
+#position {
+    margin-top: 10px;
+}
+
+.report_form #position input {
+    width: 180px;
+    height: 20px;
+    font-size: 18px;
+    color: #C0C0C0;
+}
+
+.report_form #position input::placeholder {
+    color: #C0C0C0;
+}
+
+.report_form #position a, #position ion-icon, #position label {
+    font-size: 18px;
+    color: gray;
+    font-weight: bold;
+}
+
+.form-label {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.report_form textarea {
+    width: 590px;
+    height: 150px;
+    resize: none;
+    border-radius: 3px;
+    border: 1px solid #C0C0C0;
+    padding: 5px;
+    color: #5D4639;
+    warp: on;
+}
+
+.report_form textarea::placeholder {
+    color: #C0C0C0;
+}
+
+.report_form .button {
+    margin: 10px 45px 0 0;
+    float: right;
+}
+
+.report_form .cancel {
+    margin-right: 10px;
+    border: 0px;
+    background-color: transparent;
+    font-size: 15px;
+    font-family: 'ONE-Mobile-Title';
+    text-decoration: none;
+    color: gray;
+}
+
+.report_form #report_submit {
+    float:right;
+}
+
+.loading {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    display: block;
+    opacity: 0.8;
+    background: #fff;
+    z-index: 99;
+    text-align: center;
+}
+
+.captured {
+    z-index: 100;
+    width: 514px;
+    height: 300px;
+    border: 0px;
+    position: relative;
+    top: -370px;
+    right: -650px;
+    display: none;
+    animation-name: stamp;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+}
+
+@keyframes stamp {
+    0% {transform: scale(1); opacity: 0;}
+    95% {transform: scale(5); opacity: 0;}
+    100% {transform: scale(1); opacity: 1;}
+}
+
+.report_form .submit {
+    border: 0px;
+    background-color: transparent;
+    font-size: 15px;
+    font-family: 'ONE-Mobile-Title';
+}
+
+.report_form .submit:hover, .report_form .cancel:hover {
+    background: linear-gradient(to top, #FFBB00 50%, transparent 50%);
+}
+
+input#menu {
+    display: none;
+}
+
+nav#sub{
+    display: none;
+    background: #fff;
+    width: 100px;
+    height: 60px;
+    border-radius: 3px;
+    margin: 0 auto;
+    position: relative;
+    top: -220px;
+    right: -400px;
+    box-shadow: 0 0 10px rgb(0,0,0,0.3);
+    display: none;
+    list-style: none;
+}
+
+nav#sub li a, nav#sub li ion-icon{
+    font-size: 15px;
+    text-decoration: none;
+    color: gray;
+    padding-top: 3px;
+}
+
+nav#sub li:hover a, nav#sub li:hover ion-icon {
+    color: #2B1C11;
+}
+
+nav#sub:after {
+    border-top: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-right: 15px solid #fff;
+    border-bottom: 10px solid transparent;
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: -24px;
+}
+
+input#menu:checked + nav#sub{
+    display: block;
+}
+
+.report_btn {
+    position: relative;
+    top: -190px;
+    right: -300px;
+    width:20px;
+    height: 20px;
+    background-color: transparent;
+    border: 0px;
+}
+
+.report_btn ion-icon {
+    width: 20px;
+    height: 20px;
+    color: gray;
+    cursor: pointer;
+}
+
+/* 촬영 */
+
+#tv {
+      position: relative;
+      width: 200px;
+      height: 150px;
+      margin: 20px 0;
+      background: red;
+      border-radius: 50% / 10%;
+      color: white;
+      text-align: center;
+      text-indent: .1em;
+}
+
+#tv:before {
+      content: '';
+      position: absolute;
+      top: 10%;
+      bottom: 10%;
+      right: -5%;
+      left: -5%;
+      background: inherit;
+      border-radius: 5% / 50%;
+}
+
+#camera-top {
+    text-align: center;
+    border-bottom: 50px solid #2B1C11;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    width: 300px;
+    position: relative;
+    left: 240px;
+}
+
+#camera-circle {
+    float: left;
+    margin: 0 auto;
+    width: 30px;
+    height: 30px;
+    background: #fff;
+    position: relative;
+    bottom: 30px;
+    left: 370px;
+    border-radius: 50%;
+}
+
+#camera {
+    background: #2B1C11;
+    width: 800px;
+    height: 500px;
+    border-radius: 30px;
+}
+
+#start ion-icon {
+    width: 100px;
+    height: 100px;
+    margin-top: 180px;
+    color: #2B1C11;
+}
+
+#monitor {
+    background: #fff;
+    width: 740px;
+    height: 440px;
+    border-radius: 30px;
+    margin: 0 auto;
+    padding:0 auto;
+    position: relative;
+    top: 30px;
+}
+
+.screen{
+    background: black;
+}
+
+.screen_bar {
+    position: relative;
+    top: -60px;
+}
+
+.screen_bar hr {
+    box-shadow: 0 0 5px rgb(0,0,0,0.2);
+    opacity: 0.6;
+}
+
+.screen_bar ion-icon{
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    opacity: 0.6;
+}
+
+.screen_bar ion-icon:hover{
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    opacity: 1.0;
+}
+
+#icon {
+    margin-top: 10px;
+}
+
+#left {
+    float: left;
+    margin-left: 20px;
+}
+
+#right {
+    float: right;
+    margin-right: 20px;
+}
+
+/* 마이 페이지 */
+
+.mypage_card {
+    float: left;
+    margin-top: 3%;
+    margin-left: 30px;
+    width: 300px;
+    height: 400px;
+    position: relative;
+    transition: all 1.5s;
+    transform-style: preserve-3d;
+    perspective: 1100px;
+    box-shadow: 0 10px 20px rgb(0, 0, 0 , 0.2);
+}
+
+.mypage_card ion-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 10px;
+}
+
+.img_info {
+    flex-direction: row;
+    z-index: 2;
+}
+
+.img_info img{
+    border-radius: 50%;
+    width: 130px;
+    height: 130px;
+    margin-top: 30px;
+}
+
+.img_info .profile_info {
+    margin-top: 20px;
+}
+
+.img_info .button button {
+    margin-top: 30px;
+    width: 100px;
+    height: 25px;
+    background: #2B1C11;
+    border: 0px;
+    color: #fff;
+}
+
+.profile_info p {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.profile-info span{
+    width: 100px;
+    background: red;
+    height: 100px;
+}
+
+.front, .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.front {
+    background: #2B1C11;
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.front h1, .front ion-icon {
+    color: #fff;
+}
+
+.back {
+    background: #fff;
+    border-radius: 10px;
+    transform: rotateY(180deg);
+    z-index: 2;
+}
+
+.mypage_card:hover {
+    transform: rotateY(180deg);
+}
+
+/* 보관함 */
+#box_main {
+    margin: 0 auto;
+    margin-top: 50px;
+    max-width: 1000px;
+    min-width: 700px;
+}
+
+.storage_box {
+    margin: 0 auto;
+    background: #fff;
+    width: 100%;
+    min-height: 460px;
+    font-family: 'Nanum Gothic', sans-serif;
+    border-radius: 2px;
+}
+
+#box_top {
+    width: 30%;
+    height: 50px;
+    background: #fff;
+    border-radius: 10px 10px 0 0;
+    margin-left: 70%;
+}
+
+.storage_box #subject {
+    max-width: 95%;
+    height: 50px;
+    padding-top: 20px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #2B1C11;
+}
+
+.storage_box #subject a {
+    text-weight: bold;
+    font-size: 17px;
+    color: #2B1C11;
+    font-family: 'ONE-Mobile-Title';
+}
+
+.storage_box .container1 {
+    width: 10%;
+    float: left;
+}
+
+.storage_box .container2 {
+    width: 60%;
+    float: left;
+}
+
+.storage_box .container3 {
+    width: 20%;
+    float: left;
+}
+
+.storage_box .load {
+    margin: 0 auto;
+    margin-top: 7px;
+    padding: 5px;
+    background: #C0C0C0;
+    max-width: 95%;
+    min-width: 500px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.storage_box .load a {
+    font-family: 'Nanum Gothic', sans-serif;
+    color: #fff;
+    text-decoration: none;
+}
+
+.storage_box .load:hover {
+    margin: 0 auto;
+    margin-top: 7px;
+    padding: 5px;
+    background: #2B1C11;
+    max-width: 95%;
+    min-width: 500px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.delete_btn {
+    margin: 0 auto;
+    margin-top: 10px;
+    float: right;
+    background: #2B1C11;
+    border-radius: 5px;
+    width: 80px;
+    height: 22px;
+    font-size: 13px;
+}
+
+.image {
+    text-align: center;
+    margin: 0 auto;
+    margin-left: -3%;
+    width: 700px;
+    height: 500px;
+    background: #fff;
+    box-shadow: 0 0 15px rgb(0, 0, 0, 0.3);
+}
+
+.video .image img, .video .image video {
+    margin-top: 25px;
+    width: 650px;
+    height: 450px;
+    background: red;
+}
+
+.date {
+    margin-top: -31px;
+    margin-right: -470px;
+    font-family: 'drfont_daraehand';
+    font-size: 23px;
+}
+
+.mypothole_btn {
+    margin-right: -610px;
+    font-size: 17px;
+}
+
+.mypothole_btn a {
+    text-decoration: none;
+}
+
+/* 팝업창 */
+
+.popup_wrap {
+    display: relative;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    padding: 15px;
+    backdrop-filter: blur(1px);
+}
+
+.popup_bg {
+   margin-top: 10%;
+   display: inline-block;
+   background: #f96f5d;
+   width: 330px;
+   height: 350px;
+   border-radius: 5px;
+   box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
+}
+
+.popup_bg span {
+   font-family: 'Montserrat', sans-serif;
+   color: #fff;
+   font-size: 25px;
+}
+
+.popup_bg p {
+   font-family: 'ONE-Mobile-Title';
+   font-size: 25px;
+   color: #fff;
+   margin: 0 auto;
+   margin-top: 10px;
+}
+
+.popup_bg button {
+    margin-top: 30px;
+    width: 250px;
+    height: 40px;
+    background: #fff;
+    border: 0px;
+    border-radius: 5px;
+    color: gray;
+    font-weight: bold;
+}
+
+
+/* 회원가입 페이지 */
+
+.signup {
+    font-family: 'ChosunCentennial';
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.signup input {
+    width: 200px;
+    height: 25px;
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
+    border-bottom: 1px solid gray;
+    background-color: transparent;
+    margin: 0 0 20px; 0;
+    font-family: 'Ainmom';
+    font-weight: bold;
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+
+.signup input::placeholder {
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0px;
+}
+
+.page {
+    width: 380px;
+    height: 50px;
+    margin: 0 auto;
+    font-family: 'ChosunCentennial';
+}
+
+.page a {
+    background: #fff;
+    width: 300px;
+    height: 50px;
+    border: 1px solid black;
+}
+
+.page div {
+    width:140px;
+    float:left;
+    text-align: right;
+}
+
+.join_btn button {
+    width: 250px;
+    height: 40px;
+    background-color: #2B1C11;
+    border: 0px;
+    color: #fff;
+    font-family: 'Nanum Gothic', sans-serif;
+    margin-top: 15px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.join_btn p {
+    width: 250px;
+    font-size: 13px;
+    font-family: 'NanumBarunGothic';
+    margin: 0 auto;
+    letter-spacing: 0.5px;
+    margin-top: 10px;
+    color: #5D4639;
+}
+
+.join_btn p span{
+    font-weight: bold;
+    cursor: pointer;
+    color: #2B1C11;
+}
+
+/* 지도 맵 */
+
+#map_container {
+    margin-top: 35px;
+    max-width: 950px;
+    min-width: 500px;
+    height: 570px;
+    margin: 0 auto;
+    margin-left: 8%;
+    font-family: 'NanumBarunGothic';
+}
+
+#map {
+    margin: 0 auto;
+    border: 0;
+}
+
+.search-bar {
+    margin: 0 auto;
+    margin-bottom: 15px;
+    width: 250px;
+    height: 40px;
+    border: 3px solid #2B1C11;
+    border-radius: 30px;
+}
+
+.search-bar ion-icon{
+    color: #2B1C11;
+}
+
+/* #D1B08C; */
+
+.search-txt {
+    padding: 0;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    line-height: 40px;
+}
+
+.search-btn {
+    background: none;
+    border: 0;
+    width: 40px;
+    height: 40px;
+}
+
+.map_bar {
+    position: relative;
+    bottom: 570px;
+    left: 950px;
+    background-color:white;
+    width: 300px;
+    height: 100%;
+}
+
+.notice {
+    margin: 0 auto;
+    margin-bottom: 15px;
+    width: 255px;
+    height: 30px;
+    background: #CF3C29;
+    border-radius: 5px;
+    text-align: left;
+    padding: 3px;
+    padding-left: 10px;
+    font-weight: bold;
+}
+
+.notice ion-icon, .notice a {
+    color: #fff;
+    margin-top: 3px;
+}
+
+.notice ion-icon {
+    width: 15px;
+    height: 15px;
+
+}
+
+.search_result {
+    width: 300px;
+    height: 75%;
+    overflow: auto;
+}
+.search_result::-webkit-scrollbar{
+    background: none;
+    width: 5px;
+}
+
+.search_result::-webkit-scrollbar-thumb {
+    background: #C0C0C0;
+    border-radius: 10px;
+}
+
+.map_bar img {
+    width: 250px;
+    height: 150px;
+    margin: 0 auto;
+    border-radius: 3px;
+}
+
+.map_bar .pip_subject {
+    text-align: left;
+    margin: 0 auto;
+    width: 250px;
+}
+
+.pip_subject a {
+    color: #CF3C29;
+    font-weight: bold;
+}
+
+.map_bar .pip_content {
+    text-align: left;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    width: 250px;
+    font-size: 13px;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    color: gray;
+}
+
+.map_bar .pip_content ion-icon, .map_bar .pip_content a {
+    color: gray;
+}

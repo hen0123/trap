@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>보관함</title>
+
+    <style>
+    html,body{
+        margin: 0;
+        height: 100%;
+        width: 100%;
+    }
+    </style>
+
+</head>
+<body>
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- 사이드 메뉴바 -->
+<div class="navigation" style="font-family: 'Do Hyeon', sans-serif;">
+    <ul>
+        <li class="list">
+            <a href="{% url 'video:detect' %}">
+                <span class="icon"><ion-icon name="videocam"></ion-icon></span>
+                <span class="title">촬영</span>
+            </a>
+        </li>
+        <li class="list">
+            <a href="{% url 'map:warning' %}">
+                <span class="icon"><ion-icon name="map"></ion-icon></span>
+                <span class="title">지도보기</span>
+            </a>
+        </li>
+        <li class="list">
+            <a href="{% url 'report:list' %}">
+                <span class="icon"><ion-icon name="list"></ion-icon></span>
+                <span class="title">신고내역</span>
+            </a>
+        </li>
+        <li class="list active">
+            <a href="{% url 'common:mypage' %}">
+                <span class="icon"><ion-icon name="person"></ion-icon></span>
+                <span class="title">마이페이지</span>
+            </a>
+        </li>
+        <li class="list">
+            <a href="{% url 'common:logout' %}">
+                <span class="icon"><ion-icon name="log-out"></ion-icon></span>
+                <span class="title">로그아웃</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+<!-- 보관함 목록 -->
+<div class="container item-3">
+    {% if messages %}
+    <div class="alert" role="alert">
+    {% for message in messages %}
+        <strong>{{ message.tags }}</strong>
+        <ul><li>{{ message.message }}</li></ul>
+    {% endfor %}
+    </div>
+    {% endif %}
+    <div class="subject">
+        <p>보관함 목록</p>
+    </div>
+
+
+    <!-- 보관함 리스트 -->
+    <div>
+        <div id="box_main">
+            <div class="storage_box">
+                <div>
+                    <div id="subject">
+                        <div style="width: 10%; float: left; "><a>　</a></div>
+                        <div class="container1"><a> 번호 </a></div>
+                        <div class="container2"><a> 감지내역 </a></div>
+                        <div class="container3"><a> 간편신고 </a></div>
+                    </div>
+                    {% if mypothole_list %}
+                    {% for mypothole in mypothole_list %}
+                    <div class="load">
+                        <div style="width: 10%; float: left; padding-top: 3px;"><a><input type="checkbox"></a></div>
+                        <div class="container1"><a> {{ forloop.counter }} </a></div>
+                        <div class="container2"><a href="{% url 'video:mypothole_detail' mypothole.id  %}"> {{ mypothole.title }} </a></div>
+                        <div class="container3"><a href="#pop_info" class="btn_open"> 신고 </a></div>
+
+                        <!-- 팝업 -->
+                        <div id="pop_info" class="pop_wrap" style="display: none;">
+                            <div class="popup_wrap">
+                                <div class="popup_bg">
+                                    <p style="margin-top: 15px;"><span>WARNING!</span></p>
+                                    <img src="{%static 'image/pothole.png' %}" class="create_img">
+                                    <p>신고가 완료되었습니다</p>
+                                    <button type="button" class="btn_close">확인</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    {% endfor %}
+                    {% else %}
+
+                        <a>보관내역이 없습니다.</a>
+
+                    {% endif %}
+                </div>
+            </div
+        </div>
+        <!-- 삭제하기 -->
+        <div class="delete_btn"><a style="color: #fff;">삭제하기</a></div>
+    </div>
+    <!-- 페이징처리 시작 -->
+    <ul class="pagination" style="clear:both; margin-top:-10px;">
+        <!-- 이전페이지 -->
+        {% if mypothole_list.has_previous %}
+        <li>
+            <a class="page-link" href="?page={{ mypothole_list.previous_page_number }}"><ion-icon name="arrow-back"></ion-icon></a>
+        </li>
+        {% else %}
+        <li>
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#"><ion-icon name="arrow-back"></ion-icon></a>
+        </li>
+        {% endif %}
+        <!-- 페이지리스트 -->
+        {% for page_number in mypothole_list.paginator.page_range %}
+        {% if page_number >= mypothole_list.number|add:-5 and page_number <= mypothole_list.number|add:5 %}
+        {% if page_number == mypothole_list.number %}
+        <li class="page-item active" aria-current="page">
+            <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+        </li>
+        {% else %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+        </li>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+        <!-- 다음페이지 -->
+        {% if mypothole_list.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ mypothole_list.next_page_number }}"><ion-icon name="arrow-forward"></ion-icon></a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#"><ion-icon name="arrow-forward"></ion-icon></a>
+        </li>
+        {% endif %}
+    </ul>
+    <!-- 페이징처리 끝 -->
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script type='text/javascript'>
+const list = document.querySelectorAll('.list');
+function activeLink() {
+    list.forEach((item) =>
+    item.classList.remove('active'));
+    this.classList.add('active');
+}
+
+var target = document.querySelectorAll('.btn_open');
+var btnPopClose = document.querySelectorAll('.pop_wrap .btn_close');
+var targetID;
+
+// 팝업 열기
+for(var i = 0; i < target.length; i++){
+  target[i].addEventListener('click', function(){
+    targetID = this.getAttribute('href');
+    document.querySelector(targetID).style.display = 'block';
+  });
+}
+
+// 팝업 닫기
+for(var j = 0; j < target.length; j++){
+  btnPopClose[j].addEventListener('click', function(){
+    this.parentNode.parentNode.style.display = 'none';
+  });
+}
+</script>
+
+{% endblock %}
+
+</body>
+</html>

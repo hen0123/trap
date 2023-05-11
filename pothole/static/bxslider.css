@@ -1,0 +1,14 @@
+.bx-wrapper img {
+    max-width: 100%;
+    display: block;
+}
+
+.bx-wrapper {
+  -moz-box-shadow: 0 0 5px #ccc;
+  -webkit-box-shadow: 0 0 5px #ccc;
+  box-shadow: 0 0 5px #ccc;
+  border: 0px solid #2B1C11;
+  background: #2B1C11;
+  margin-bottom: 0px;
+  margin : 0 auto;
+}

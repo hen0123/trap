@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>보관 상세 내역</title>
+
+    <style>
+    html,body{
+        margin: 0;
+        height: 100%;
+        width: 100%;
+    }
+    </style>
+</head>
+<body>
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- 사이드 메뉴바 -->
+<div class="navigation" style="font-family: 'Do Hyeon', sans-serif;">
+    <ul>
+        <li class="list">
+            <a href="{% url 'video:detect' %}">
+                <span class="icon"><ion-icon name="videocam"></ion-icon></span>
+                <span class="title">촬영</span>
+            </a>
+        </li>
+        <li class="list">
+            <a href="{% url 'map:warning' %}">
+                <span class="icon"><ion-icon name="map"></ion-icon></span>
+                <span class="title">지도보기</span>
+            </a>
+        </li>
+        <li class="list">
+            <a href="{% url 'report:list' %}">
+                <span class="icon"><ion-icon name="list"></ion-icon></span>
+                <span class="title">신고내역</span>
+            </a>
+        </li>
+        <li class="list active">
+            <a href="{% url 'common:mypage' %}">
+                <span class="icon"><ion-icon name="person"></ion-icon></span>
+                <span class="title">마이페이지</span>
+            </a>
+        </li>
+        <li class="list">
+            <a href="{% url 'common:logout' %}">
+                <span class="icon"><ion-icon name="log-out"></ion-icon></span>
+                <span class="title">로그아웃</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+<!-- 상세 내역 -->
+<div class="container item-3">
+
+    <!-- message 표시 -->
+    {% if messages %}
+    <div class="alert" role="alert">
+    {% for message in messages %}
+        <strong>{{ message.tags }}</strong>
+        <ul><li>{{ message.message }}</li></ul>
+    {% endfor %}
+    </div>
+    {% endif %}
+
+    <div>
+        <a href="{% url 'video:mypothole' %}"><img src="{%static 'image/로고2.png' %}" alt="지뢰찾기" style="height:100px;"></a>
+    </div>
+
+    <!-- 테스트 템플릿 -->
+    <div style="width: 650px; margin:0 auto;">
+        <div style="font-family: 'HallymGothic-Regular';">
+            <div class="video">
+            <!-- 첨부 사진 -->
+                <div class="image">
+                    <div>
+                        <!--
+                        {% if is_video %}
+                            <video controls>
+                                <source src="{{ mypothole.detect_file.url }}" type="video/mp4">
+                            </video>
+                        {% else %}
+                        -->
+                            <img src="{{ mypothole.detect_file.url }}" >
+                        <!--
+                        {% endif %} -->
+                    </div>
+                </div>
+
+                <!-- 상세 내용 -->
+                <div class="blog-table">
+
+                    <div>
+                        <!-- 제목 -->
+                        <h4 class="date"><a>{{ mypothole.title }}</a></h4>
+                    </div>
+                    <!-- 다운로드, 삭제 -->
+                    <div class="mypothole_btn">
+                        {% if mypothole.detect_file %}
+                            <a href="/video/download?path={{ mypothole.detect_file }}"><ion-icon name="download"></ion-icon>저장</a>
+                        {% endif %}
+                         <a href="javascript:void(0)" class="delete btn btn-sm btn-outline-secondary" data-uri="{% url 'video:mypothole_delete' mypothole.id  %}"><ion-icon name="trash"></ion-icon>삭제</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+{% endblock %}
+
+{% block script %}
+<script type='text/javascript'>
+const delete_elements = document.getElementsByClassName("delete");
+Array.from(delete_elements).forEach(function(element) {
+    element.addEventListener('click', function() {
+        if(confirm("정말로 삭제하시겠습니까?")) {
+            location.href = this.dataset.uri;
+        };
+    });
+});
+</script>
+{% endblock %}
+
+</body>
+</html>

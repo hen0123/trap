@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>신고 상세 내역</title>
+
+    <style>
+    html,body{
+        margin: 0;
+        height: 100%;
+        width: 100%;
+    }
+    </style>
+
+</head>
+<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'report_card.css' %}">
+
+<!-- 사이드 메뉴바 -->
+<div class="navigation" style="font-family: 'Do Hyeon', sans-serif;">
+    <ul>
+        <li class="list">
+            <a href="{% url 'video:detect' %}">
+                <span class="icon"><ion-icon name="videocam"></ion-icon></span>
+                <span class="title">촬영</span>
+            </a>
+        </li>
+        <li class="list">
+            <a href="{% url 'map:warning' %}">
+                <span class="icon"><ion-icon name="map"></ion-icon></span>
+                <span class="title">지도보기</span>
+            </a>
+        </li>
+        <li class="list active">
+            <a href="{% url 'report:list' %}">
+                <span class="icon"><ion-icon name="list"></ion-icon></span>
+                <span class="title">신고내역</span>
+            </a>
+        </li>
+        <li class="list">
+            <a href="{% url 'common:mypage' %}">
+                <span class="icon"><ion-icon name="person"></ion-icon></span>
+                <span class="title">마이페이지</span>
+            </a>
+        </li>
+        <li class="list">
+            <a href="{% url 'common:logout' %}">
+                <span class="icon"><ion-icon name="log-out"></ion-icon></span>
+                <span class="title">로그아웃</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+<!-- 상세 내역 -->
+<div class="container item-3">
+
+    <!-- message 표시 -->
+    {% if messages %}
+    <div class="alert" role="alert">
+    {% for message in messages %}
+        <strong>{{ message.tags }}</strong>
+        <ul><li>{{ message.message }}</li></ul>
+    {% endfor %}
+    </div>
+    {% endif %}
+
+    <div>
+        <a href="{% url 'report:list' %}"><img src="{%static 'image/로고2.png' %}" alt="지뢰찾기" style="height:100px;"></a>
+    </div>
+
+    <!-- 테스트 템플릿 -->
+    <div style="width: 650px; margin:0 auto;">
+        <div style="font-family: 'HallymGothic-Regular';">
+            <div class="blog-card blog-card-blog">
+            <!-- 첨부 사진 -->
+            <div class="blog-card-image">
+                {% if report.file %}
+                    <div>
+                        <img class="img" src="{{ report.file.url }}">
+                    </div>
+                {% else %}
+                    <div>
+                        <img class="img" src="{% static 'image/basis-image2.png' %}" alt="첨부파일 없음">
+                    </div>
+                {% endif %}
+                <div class="ripple-cont"></div>
+            </div>
+
+            <!-- 상세 내용 -->
+            <div class="blog-table">
+                <div>
+                <!-- 처리 상태 -->
+                <h6 class="blog-category blog-text-success"><i class="far fa-newspaper"></i>{{ report.state }}</h6>
+                </div>
+
+                <div>
+                    <!-- 신고 제목 -->
+                    <h4 class="blog-card-caption" style="">
+                        <a>{{ report.subject }}</a></h4>
+                    <!-- 좌표 -->
+                    <ion-icon name="location" style="height:15px; width:15px; color:gray;"></ion-icon>
+                    <a class="blog-card-description" style="font-size:15px; color:gray;">위도 {{ report.x_pos }} , 경도 {{ report.y_pos }} </a>
+                </div>
+
+                <div class="blog-card-description">
+                <!-- 신고 내용 -->
+                <a> {{ report.content }} </a>
+                </div>
+
+                <!-- 신고 일시 -->
+                <a class="" style="float:right; font-size:13px; margin-bottom:10px; margin-top:20px;">제보일시 : {{ report.create_date }}</a>
+            </div>
+        </div>
+        <!-- 게시글 세부 메뉴-->
+        <label class="report_btn" for="menu"><ion-icon name="ellipsis-vertical"></ion-icon></label>
+        <input id="menu" type="checkbox">
+            <nav id="sub">
+                <li style="padding-top: 7px;">
+                <li><a href="{% url 'report:report_modify' report.id  %}"><ion-icon name="create"></ion-icon> 수정하기 </a></li>
+                <li><a href="javascript:void(0)" class="delete" data-uri="{% url 'report:report_delete' report.id  %}"><ion-icon name="trash-outline"></ion-icon> 삭제하기</a></li>
+            </nav>
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script type='text/javascript'>
+const delete_elements = document.getElementsByClassName("delete");
+Array.from(delete_elements).forEach(function(element) {
+    element.addEventListener('click', function() {
+        if(confirm("정말로 삭제하시겠습니까?")) {
+            location.href = this.dataset.uri;
+        };
+    });
+});
+</script>
+
+{% endblock %}
+
+</body>
+</html>

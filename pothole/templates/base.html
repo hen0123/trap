@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <!-- 반응형 적용 -->
+    <meta name="viewport" content="width=divice-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'font.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'menu.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+
+    <!-- bxSlider 세부 SCC -->
+    <link rel="stylesheet" type="text/css" href="{% static 'bxslider.css' %}">
+
+    <!-- 자바스크립트 -->
+    <!-- <script type="text/javascript" src="{% static 'es5.js' %}"></script> -->
+
+
+    <title>Base</title>
+</head>
+<body>
+    {% block content %}
+    {% endblock %}
+
+    <!-- 자바스크립트 Start -->
+    {% block script %}
+    {% endblock %}
+    <!-- 자바스크립트 End -->
+</body>
+</html>

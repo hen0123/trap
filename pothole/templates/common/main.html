@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>지뢰찾기에 참여해주세요!</title>
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+
+    <style>
+    .background_img{
+        width: 700px;
+        height: 850px;
+        background: url('/static/image/poster1.png') no-repeat;
+        background-size: cover;
+        color: white;
+    }
+    </style>
+
+    <!-- bxSlider 옵션 -->
+    <script>
+        $( document ).ready( function() {
+            $( '.slider' ).bxSlider({
+            auto: true,
+            autoHover: true,
+            pause: 2000,
+            slideWidth: 500,
+            controls: false,
+            infiniteLoop: true,
+            randomStart: true,
+            pager: false
+            });
+        } );
+    </script>
+
+</head>
+<body style="background-color: #fff;">
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="">
+<div class="container">
+    <div class="item background_img">
+    <!-- 메인 범위 (footer 제외) -->
+    <div id="mainwrap">
+        <!-- 로고 -->
+        <div>
+        <a href="{% url 'common:main' %}">
+              <img src="{%static 'image/로고2.png' %}" alt="지뢰찾기""></a>
+        </div>
+        <!-- bxSlider -->
+        <div>
+            <div class="slider">
+                <div><img src="../static/image/bx1.png" /></div>
+                <div><img src="../static/image/64.png" /></div>
+                <div><img src="../static/image/75.png" /></div>
+            </div>
+        </div>
+        <!-- 문구 -->
+        <div>
+            <p class="dead"><b>DEAD OR ALIVE</p>
+        </div>
+        <!-- 로그인 버튼-->
+        <div id="login" style="margin-top:20px;">
+        <button id="login1" class="do_hyeon jb" type="button" onclick = "location.href = '{% url 'common:login' %}'">
+            <div style="float:left;">
+                <img src="{% static 'image/신고버튼.png' %}" class="jb-1">
+                <img src="{% static 'image/신고버튼1.png' %}" class="jb-2">
+            </div>
+            신고하기</button>
+        </div>
+    </div>
+        <!-- footer -->
+        <footer>
+            <div style="float:left;">
+            <p> 대표 : 박소은 신동원 이성철 이지혜 한창현 </p>
+            <p> 서울 서초구 동작대로 132 9층 </p>
+            <p><b> Copyright © 러닝메이트. All rights reserved. </b></p>
+            </div>
+            <!-- 1조 팀명 -->
+            <div style="float:right;">
+            <img src="{% static 'image/로고RUNNINGMATE.png' %}" alt="러닝메이트">
+            </div>
+        </footer>
+    </div>
+    <div class="">
+    </div>
+</div>
+</div>
+
+{% endblock %}
+</body>
+</html>

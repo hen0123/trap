@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Jua&family=Libre+Baskerville:wght@700&family=Montserrat:wght@200&family=Nanum+Gothic:wght@400;700&family=Ribeye&family=Stylish&family=Unlock&display=swap');
+
+@font-face {
+    font-family: 'ChosunCentennial';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/ChosunCentennial.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+ font-family: 'NanumBarunGothic';
+ font-style: normal;
+ font-weight: 400;
+ src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+ src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
+}
+
+@font-face {
+ font-family: 'NanumBarunGothic';
+ font-style: normal;
+ font-weight: 700;
+ src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot');
+ src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.ttf') format('truetype')
+}
+
+@font-face {
+ font-family: 'NanumBarunGothic';
+ font-style: normal;
+ font-weight: 300;
+ src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot');
+ src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'LeeSeoyun';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 한림고딕체 */
+@font-face {
+    font-family: 'HallymGothic-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2204@1.0/HallymGothic-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* 다래손글씨체 */
+@font-face {
+    font-family: 'drfont_daraehand';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/drfont_daraehand.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 원스토어 모바일고딕 제목체*/
+@font-face {
+    font-family: 'ONE-Mobile-Title';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Title.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 어그로체 */
+@font-face {
+    font-family: 'SBAggroB';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 아인맘 손글씨 */
+@font-face {
+    font-family: 'Ainmom';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/naverfont_01@1.0/Ainmom.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.nanumbarungothic * {
+ font-family: 'NanumBarunGothic', sans-serif;
+}
+
+.ribeye{
+    font-family: 'Ribeye', cursive;
+    transform: rotate(0.04deg);
+}
+
+.stylist{
+    font-family: 'Stylish', sans-serif;
+    transform: rotate(0.04deg);
+}
+
+.unlock{
+    font-family: 'Unlock', cursive;
+    transform: rotate(0.04deg);
+}
+
+.do_hyeon{
+    font-family: 'Do Hyeon', sans-serif;
+    transform: rotate(0.04deg);
+}
+
+.jua{
+    font-family: 'Jua', sans-serif;
+    transform: rotate(0.04deg);
+}
+
+.nanum_gothic{
+    font-family: 'Nanum Gothic', sans-serif;
+    transform: rotate(0.04deg);
+}
+
+.libre_baskerville{
+font-family: 'Libre Baskerville', serif;
+}
